@@ -46,7 +46,10 @@ class ReportService:
     
     def GetClientsAddedMonthlyLastSixMonths(self):
         """
-        Display number of clients added for the past 6 months, show this monthly.
+        ==============================================================================================
+        Client growth report:
+        Displaying number of clients added for the past 6 months, monthly basis.
+        ==============================================================================================
         """
         # Connect to the wilsonFinancial database
         wilsonFinancialDB = self.dbService.connect_to_database();
@@ -60,7 +63,10 @@ class ReportService:
 
     def GetAverageAmountOfAssetsForEntireClientList(self):
         """
-        Display the number of clients added for the past 6 months, show this monthly.
+        ==============================================================================================
+        Asset Value Report : 
+        Display of average amount of assets for the entire client list.
+        ==============================================================================================
         """
         # Connect to the wilsonFinancial database
         wilsonFinancialDB = self.dbService.connect_to_database();
@@ -74,7 +80,10 @@ class ReportService:
 
     def GetClientWithMoreThanTenTransactions(self):
         """
+        ==============================================================================================
+        Transaction Count Report:
         Display the clients with more than 10 transactions.
+        ==============================================================================================
         """
         # Connect to the wilsonFinancial database
         wilsonFinancialDB = self.dbService.connect_to_database();
