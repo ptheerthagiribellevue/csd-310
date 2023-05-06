@@ -98,15 +98,15 @@ CREATE TABLE ComplianceManager (
 --  COMMENT Sample data creation
 
 -- COMMENT 1. Inserting sample data in Clients table
-    INSERT INTO Clients (client_id, client_first_name, client_last_name, client_email, client_phone, Address, account_balance, account_open_date) VALUES
-    (1, 'John', 'Smith', 'johnsmith@example.com', '555-1234', '123 Main St', 25000.00, '2020-12-01'),
-    (2, 'Jane', 'Garcia', 'janegarcia@example.com', '555-5678', '456 Maple Ave', 250000.00, '2021-02-01'),
-    (3, 'Bob', 'Smith', 'bobsmith@example.com', '555-9012', '789 Oak St', 5000.00, '2020-04-01'),
-    (4, 'Alice', 'Jones', 'alicejones@example.com', NULL, '456 Pine St', 10000.00, '2021-02-01'),
-    (5, 'Charlie', 'Brown', 'charliebrown@example.com', '555-3456', '789 Elm St', 50000.00, '2019-11-01'),
-    (6, 'Lucy', 'Smith', 'lucysmith@example.com', '555-7890', '123 Oak Ave', 100000.00, '2021-02-01'),
-    (7, 'David', 'Lee', 'davidlee@example.com', '555-2345', '456 Cherry St', 1000.00, '2021-03-01'),
-    (8, 'Emily', 'Davis', 'emilydavis@example.com', NULL, '789 Birch Rd', 125000.00, '2020-06-01');
+INSERT INTO Clients (client_id, client_first_name, client_last_name, client_email, client_phone, Address, account_balance, account_open_date) VALUES
+('1', 'John', 'Smith', 'johnsmith@example.com', '555-1234', '123 Main St', '25000.00', '2022-12-01'),
+('2', 'Jane', 'Garcia', 'janegarcia@example.com', '555-5678', '456 Maple Ave', '250000.00', '2023-01-01'),
+('3', 'Bob', 'Smith', 'bobsmith@example.com', '555-9012', '789 Oak St', '5000.00', '2023-01-15'),
+('4', 'Alice', 'Jones', 'alicejones@example.com', NULL, '456 Pine St', '10000.00', '2022-11-15'),
+('5', 'Charlie', 'Brown', 'charliebrown@example.com', '555-3456', '789 Elm St', '50000.00', '2023-02-15'),
+('6', 'Lucy', 'Smith', 'lucysmith@example.com', '555-7890', '123 Oak Ave', '100000.00', '2023-03-15'),
+('7', 'David', 'Lee', 'davidlee@example.com', '555-2345', '456 Cherry St', '1000.00', '2023-03-25'),
+('8', 'Emily', 'Davis', 'emilydavis@example.com', NULL, '789 Birch Rd', '125000.00', '2022-10-25');
 
 
 -- COMMENT 2. Inserting sample data in Assets table
@@ -125,17 +125,69 @@ INSERT INTO Assets (asset_id, asset_type, asset_value, purchase_date, client_id)
 
 
 -- COMMENT 3. Inserting sample data in Transactions table
-INSERT INTO Transactions (asset_id, transaction_type, description, transaction_date, transaction_amount) VALUES
-    (1, 'Purchase', 'Bought 100 shares of AAPL', '2021-01-15', 5000),
-    (1, 'Purchase', 'Purchase 200 shares of XYZ Corp', '2021-02-15', 5000),
-    (1, 'Purchase', 'Purchase of XYZ Bond', '2021-03-16', 5000),
-    (2, 'Sale', 'Sold 50 shares of AAPL', '2023-05-01', 10000),
-    (3, 'Purchase', 'Bought 50 shares of AMZN', '2023-05-01', 75000),
-    (4, 'Dividend', 'Received dividend for MSFT', '2023-05-01', 1000),
-    (5, 'Sale', 'Sold 20 shares of MSFT', '2023-05-02', 3000),
-    (6, 'Purchase', 'Bought 200 shares of TSLA', '2023-05-02', 150000),
-    (7, 'Purchase', 'Bought 500 shares of GOOGL', '2023-05-02', 100000),
-    (8, 'Sale', 'Sold 100 shares of TSLA', '2023-05-03', 50000);
+INSERT INTO Transactions (transaction_id, transaction_type, transaction_date, transaction_amount, description, asset_id) VALUES
+('1', 'Purchase', '2021-01-15', '5000.00', 'Bought 100 shares of AAPL', '1'),
+('2', 'Purchase', '2021-02-15', '5000.00', 'Purchase 200 shares of XYZ Corp', '1'),
+('3', 'Purchase', '2021-03-16', '5000.00', 'Purchase of XYZ Bond', '1'),
+('4', 'Sale', '2023-05-01', '10000.00', 'Sold 50 shares of AAPL', '2'),
+('5', 'Purchase', '2023-05-01', '75000.00', 'Bought 50 shares of AMZN', '3'),
+('6', 'Dividend', '2023-05-01', '1000.00', 'Received dividend for MSFT', '4'),
+('7', 'Sale', '2023-05-02', '3000.00', 'Sold 20 shares of MSFT', '5'),
+('8', 'Purchase', '2023-05-02', '150000.00', 'Bought 200 shares of TSLA', '6'),
+('9', 'Purchase', '2023-05-02', '100000.00', 'Bought 500 shares of GOOGL', '7'),
+('10', 'Sale', '2023-05-03', '50000.00', 'Sold 100 shares of TSLA', '8'),
+('11', 'Purchase', '2023-04-15', '5000.00', 'Bought 100 shares of AAPL', '1'),
+('12', 'Purchase', '2023-04-15', '5000.00', 'Purchase 200 shares of XYZ Corp', '1'),
+('13', 'Purchase', '2023-04-16', '5000.00', 'Purchase of XYZ Bond', '1'),
+('14', 'Sale', '2023-05-01', '10000.00', 'Sold 50 shares of AAPL', '1'),
+('15', 'Purchase', '2023-05-02', '75000.00', 'Bought 50 shares of AMZN', '1'),
+('16', 'Dividend', '2023-05-03', '1000.00', 'Received dividend for MSFT', '1'),
+('17', 'Sale', '2023-05-02', '3000.00', 'Sold 20 shares of MSFT', '1'),
+('18', 'Purchase', '2023-05-02', '150000.00', 'Bought 200 shares of TSLA', '1'),
+('19', 'Purchase', '2023-05-02', '100000.00', 'Bought 500 shares of GOOGL', '1'),
+('20', 'Sale', '2023-05-03', '50000.00', 'Sold 100 shares of TSLA', '1'),
+('21', 'Purchase', '2023-05-15', '5000.00', 'Bought 100 shares of AAPL', '1'),
+('22', 'Purchase', '2023-05-17', '5000.00', 'Bought 100 shares of AAPL', '1'),
+('23', 'Purchase', '2023-05-20', '5000.00', 'Purchase of XYZ Bond', '1'),
+('24', 'Purchase', '2023-04-15', '5000.00', 'Bought 100 shares of AAPL', '2'),
+('25', 'Purchase', '2023-04-15', '5000.00', 'Purchase 200 shares of XYZ Corp', '2'),
+('26', 'Purchase', '2023-04-16', '5000.00', 'Purchase of XYZ Bond', '2'),
+('27', 'Sale', '2023-04-01', '10000.00', 'Sold 50 shares of AAPL', '2'),
+('28', 'Purchase', '2023-04-02', '75000.00', 'Bought 50 shares of AMZN', '2'),
+('29', 'Dividend', '2023-04-03', '1000.00', 'Received dividend for MSFT', '2'),
+('30', 'Sale', '2023-04-02', '3000.00', 'Sold 20 shares of MSFT', '2'),
+('31', 'Purchase', '2023-04-02', '150000.00', 'Bought 200 shares of TSLA', '2'),
+('32', 'Purchase', '2023-04-02', '100000.00', 'Bought 500 shares of GOOGL', '2'),
+('33', 'Sale', '2023-04-03', '50000.00', 'Sold 100 shares of TSLA', '2'),
+('34', 'Purchase', '2023-04-15', '5000.00', 'Bought 100 shares of AAPL', '2'),
+('35', 'Purchase', '2023-04-17', '5000.00', 'Bought 100 shares of AAPL', '2'),
+('36', 'Purchase', '2023-04-20', '5000.00', 'Purchase of XYZ Bond', '2'),
+('37', 'Purchase', '2023-04-15', '5000.00', 'Bought 100 shares of AAPL', '3'),
+('38', 'Purchase', '2023-04-15', '5000.00', 'Purchase 200 shares of XYZ Corp', '3'),
+('39', 'Purchase', '2023-04-16', '5000.00', 'Purchase of XYZ Bond', '3'),
+('40', 'Sale', '2023-04-01', '10000.00', 'Sold 50 shares of AAPL', '3'),
+('41', 'Purchase', '2023-04-02', '75000.00', 'Bought 50 shares of AMZN', '3'),
+('42', 'Dividend', '2023-04-03', '1000.00', 'Received dividend for MSFT', '3'),
+('43', 'Sale', '2023-04-02', '3000.00', 'Sold 20 shares of MSFT', '3'),
+('44', 'Purchase', '2023-04-02', '150000.00', 'Bought 200 shares of TSLA', '3'),
+('45', 'Purchase', '2023-04-02', '100000.00', 'Bought 500 shares of GOOGL', '3'),
+('46', 'Sale', '2023-04-03', '50000.00', 'Sold 100 shares of TSLA', '3'),
+('47', 'Purchase', '2023-04-15', '5000.00', 'Bought 100 shares of AAPL', '3'),
+('48', 'Purchase', '2023-04-17', '5000.00', 'Bought 100 shares of AAPL', '3'),
+('49', 'Purchase', '2023-04-20', '5000.00', 'Purchase of XYZ Bond', '3'),
+('50', 'Purchase', '2023-03-15', '5000.00', 'Bought 100 shares of AAPL', '5'),
+('51', 'Purchase', '2023-03-15', '5000.00', 'Purchase 200 shares of XYZ Corp', '5'),
+('52', 'Purchase', '2023-03-16', '5000.00', 'Purchase of XYZ Bond', '5'),
+('53', 'Sale', '2023-03-01', '10000.00', 'Sold 50 shares of AAPL', '5'),
+('54', 'Purchase', '2023-03-02', '75000.00', 'Bought 50 shares of AMZN', '5'),
+('55', 'Dividend', '2023-03-03', '1000.00', 'Received dividend for MSFT', '5'),
+('56', 'Sale', '2023-03-02', '3000.00', 'Sold 20 shares of MSFT', '5'),
+('57', 'Purchase', '2023-03-02', '150000.00', 'Bought 200 shares of TSLA', '5'),
+('58', 'Purchase', '2023-03-02', '100000.00', 'Bought 500 shares of GOOGL', '5'),
+('59', 'Sale', '2023-03-03', '50000.00', 'Sold 100 shares of TSLA', '5'),
+('60', 'Purchase', '2023-03-15', '5000.00', 'Bought 100 shares of AAPL', '5'),
+('61', 'Purchase', '2023-03-17', '5000.00', 'Bought 100 shares of AAPL', '5'),
+('62', 'Purchase', '2023-03-20', '5000.00', 'Purchase of XYZ Bond', '5');
   
 
 -- COMMENT 4. Inserting sample data in Department table
