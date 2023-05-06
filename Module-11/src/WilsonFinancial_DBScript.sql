@@ -1,8 +1,8 @@
 /*
 Group: Group3
 Members: Loren Alwarez-Mejias & Praveen Theerthagiri 
-Assignment: Wilson Financial case study - Assignment 9, 10 
-Date: 05/02/2023
+Assignment: Wilson Financial case study - Assignment 9, 10, 11
+Date: 05/05/2023
 
 SQL scripts for WilsonFinancialDB. 
 - Sql statements to create tables for 
