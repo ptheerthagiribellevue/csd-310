@@ -46,14 +46,16 @@ class ReportService:
     
     def GetClientsAddedMonthlyLastSixMonths(self):
         """
+        This method is responsible to display the clients added monthly basis for the last 6 months.
+        """
+        # Connect to the wilsonFinancial database
+        wilsonFinancialDB = self.dbService.connect_to_database();
+        msg = """
         ==============================================================================================
         Client growth report:
         Displaying number of clients added for the past 6 months, monthly basis.
         ==============================================================================================
         """
-        # Connect to the wilsonFinancial database
-        wilsonFinancialDB = self.dbService.connect_to_database();
-        msg = "Clients added monthly basis for the last 6 months."
 
         # Queries & Gets all - ComplianceManager data
         print_results(msg, self.dbService, wilsonFinancialDB, self.queries.GetClientsAddedMonthlyLastSixMonths)
@@ -63,15 +65,17 @@ class ReportService:
 
     def GetAverageAmountOfAssetsForEntireClientList(self):
         """
+        This method is responsible to display the average amount of assets for the entire client list.
+        """
+        # Connect to the wilsonFinancial database
+        wilsonFinancialDB = self.dbService.connect_to_database();
+
+        msg = """
         ==============================================================================================
         Asset Value Report : 
         Display of average amount of assets for the entire client list.
         ==============================================================================================
         """
-        # Connect to the wilsonFinancial database
-        wilsonFinancialDB = self.dbService.connect_to_database();
-        msg = "Average amount of assets for the entire client list."
-
         # Queries & Gets all - ComplianceManager data
         print_results(msg, self.dbService, wilsonFinancialDB, self.queries.GetAverageAmountOfAssetsForEntireClientList)
 
@@ -80,14 +84,17 @@ class ReportService:
 
     def GetClientWithMoreThanTenTransactions(self):
         """
-        ==============================================================================================
-        Transaction Count Report:
-        Display the clients with more than 10 transactions.
-        ==============================================================================================
+        This method is responsible to display clients with more than 10 transactions..
         """
+
         # Connect to the wilsonFinancial database
         wilsonFinancialDB = self.dbService.connect_to_database();
-        msg = "Client with more than 10 transactions."
+        msg = """
+        ==============================================================================================
+        Transaction Count Report:
+        Displaying clients with more than 10 transactions.
+        ==============================================================================================
+        """
 
         # Queries & Gets all - ComplianceManager data
         print_results(msg, self.dbService, wilsonFinancialDB, self.queries.GetClientWithMoreThanTenTransactions)
@@ -97,10 +104,10 @@ class ReportService:
 
 # Function to print query results
 def print_results(heading, dbService, wilsonFinancialDB, query):
-    print("--- {} ---".format(heading))
+    print("{}\n".format(heading))
     columnHeaders, queryResults = dbService.get_query_results(wilsonFinancialDB, query);
     for result in queryResults:
-        print("\n".join(["{}: {}".format(columnHeaders[i], result[i]) for i in range(len(columnHeaders))]))
+        print("\n".join(["\t\t{}: {}".format(columnHeaders[i], result[i]) for i in range(len(columnHeaders))]))
         print("\n")
     input("Press Enter to continue...")
 
